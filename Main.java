@@ -1,22 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        
-        Vehicle v1 = new Vehicle();
-        v1.brand = "Toyota";
-        v1.model = "Corolla";
-        v1.year = 1995;
 
-        Vehicle v2 = new Vehicle();
-        v2.brand = "Honda";
-        v2.model = "Civic";
-        v2.year = 2010;
+        Vehicle v1 = new Vehicle("Toyota", "Corolla", 1995);
+        Vehicle v2 = new Vehicle("Honda", "Civic", 2010);
+        Vehicle v3 = new Vehicle("Tesla", "Model 3", 2023);
 
-        Vehicle v3 = new Vehicle();
-        v3.brand = "Tesla";
-        v3.model = "Model 3";
-        v3.year = 2023;
-
-        
         System.out.println("=== Vehicle 1 ===");
         v1.displayInfo();
         System.out.println("Age: " + v1.calculateAge());
@@ -33,3 +21,4 @@ public class Main {
         System.out.println("Vintage: " + v3.isVintage());
     }
 }
+
