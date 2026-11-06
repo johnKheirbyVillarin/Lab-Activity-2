@@ -1,40 +1,16 @@
-public class Vehicle {
 
+public abstract class Vehicle {
 
-    String brand;
-    String model;
-    int year;
+    protected final String brand;
+    protected final String model;
+    protected final int year;
+    private double totalKm;
 
     public Vehicle(String brand, String model, int year) {
         this.brand = brand;
         this.model = model;
         this.year = year;
-    }
-
-    void displayInfo() {
-        System.out.println("Brand: " + brand + ", Model: " + model + ", Year: " + year);
-    }
-
-    int calculateAge() {
-        return 2026 - year;
-    }
-
-    boolean isVintage() {
-
-
-    private String brand;
-    private String model;
-    private int year;
-
-    public Vehicle(String brand, String model, int year) {
-        this.brand = brand;
-        this.model = model;
-
-        if (year >= 1886 && year <= 2026) {
-            this.year = year;
-        } else {
-            this.year = 2026;
-        }
+        this.totalKm = 0;
     }
 
     public String getBrand() {
@@ -49,26 +25,51 @@ public class Vehicle {
         return year;
     }
 
-    public boolean setYear(int year) {
-        if (year >= 1886 && year <= 2026) {
-            this.year = year;
-            return true;
-        }
-
-        return false;
+    public double getTotalKm() {
+        return totalKm;
     }
+
+    protected String fullName() {
+        return brand + " " + model;
+    }
+
+    public abstract void startEngine();
 
     public void displayInfo() {
-        System.out.println("Brand: " + brand + ", Model: " + model + ", Year: " + year);
+        System.out.println("[" + year + "] " + fullName());
     }
 
-    public int calculateAge() {
-        return 2026 - year;
+    public void drive(int km) {
+        totalKm += km;
+        System.out.println(fullName() + " travelled " + km + " km.");
     }
 
-    public boolean isVintage() {
-
-        return calculateAge() > 25;
+    public void drive(int km, String destination) {
+        totalKm += km;
+        System.out.println(fullName() + " headed to " + destination
+                + " (" + km + " km).");
     }
+
+    public void drive(int km, String destination, boolean highway) {
+        totalKm += km;
+
+        String road;
+
+        if (highway) {
+            road = "via the highway";
+        } else {
+            road = "via local roads";
+        }
+
+        System.out.println(fullName() + " went to " + destination
+                + " " + road + " (" + km + " km).");
+    }
+
+    public abstract void moveForward();
+
+    public abstract void moveBackwards();
+
+    public abstract void moveLeft();
+
+    public abstract void moveRight();
 }
-
